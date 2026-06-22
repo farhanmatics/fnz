@@ -17,10 +17,42 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fnzevent.com";
+
+const title = "FNZ Event — Curated Turkish Journeys";
+const description =
+  "FNZ Event crafts private, thoughtfully designed travel itineraries across Türkiye — from the balloons of Cappadocia to the turquoise coast.";
+
 export const metadata: Metadata = {
-  title: "FNZ Event — Curated Turkish Journeys",
-  description:
-    "FNZ Event crafts private, thoughtfully designed travel itineraries across Türkiye — from the balloons of Cappadocia to the turquoise coast.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  icons: {
+    icon: "/fnz-logo.ico",
+    shortcut: "/fnz-logo.ico",
+    apple: "/assets/fnz-logo.png",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "FNZ Event",
+    title,
+    description,
+    url: "/",
+    images: [
+      {
+        url: "/assets/thumb.png",
+        width: 1024,
+        height: 1024,
+        alt: "FNZ Event",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/assets/thumb.png"],
+  },
 };
 
 export default function RootLayout({
