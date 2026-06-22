@@ -190,7 +190,7 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 const STORAGE_KEY = "fnz-lang";
-const DEFAULT_LANG: Lang = "en";
+const DEFAULT_LANG: Lang = "tr";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
