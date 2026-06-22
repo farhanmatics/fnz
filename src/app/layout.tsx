@@ -17,7 +17,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fnzevent.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://fnz-phi.vercel.app";
 
 const title = "FNZ Event — Curated Turkish Journeys";
 const description =
