@@ -29,6 +29,7 @@ export default function Header() {
   ];
 
   const isActive = (href: string) => pathname === href;
+  const overHero = isHome && !scrolled;
 
   return (
     <header
@@ -37,7 +38,17 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-32 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="flex items-center" aria-label="FNZ Event">
+        <Link
+          href="/"
+          className="relative flex items-center"
+          aria-label="FNZ Event"
+        >
+          <span
+            aria-hidden="true"
+            className={`pointer-events-none absolute left-1/2 top-1/2 -z-10 h-24 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white blur-2xl transition-opacity duration-500 ${
+              overHero ? "opacity-80" : "opacity-0"
+            }`}
+          />
           <Image
             src="/assets/fnz-logo.png"
             alt="FNZ Event"
@@ -53,7 +64,9 @@ export default function Header() {
             <Link
               key={item.id}
               href={item.href}
-              className={`navlink ${isActive(item.href) ? "active" : ""}`}
+              className={`navlink transition-colors duration-500 ${
+                overHero ? "text-cream" : "text-navy"
+              } ${isActive(item.href) ? "active" : ""}`}
             >
               {item.label}
             </Link>
@@ -61,7 +74,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-6 md:flex">
-          <LanguageSwitcher />
+          <LanguageSwitcher onDark={overHero} />
           <Link
             href="/contact"
             className="btn-gold border border-gold px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.18em] text-gold transition-colors duration-500 hover:bg-gold hover:text-navy"
@@ -71,12 +84,14 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4 md:hidden">
-          <LanguageSwitcher />
+          <LanguageSwitcher onDark={overHero} />
           <button
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((v) => !v)}
-            className="text-2xl text-navy"
+            className={`text-2xl transition-colors duration-500 ${
+              overHero ? "text-cream" : "text-navy"
+            }`}
           >
             &#9776;
           </button>

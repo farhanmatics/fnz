@@ -46,8 +46,10 @@ const FLAGS: Record<Lang, { node: React.ReactNode; label: string }> = {
 
 export default function LanguageSwitcher({
   className = "",
+  onDark = false,
 }: {
   className?: string;
+  onDark?: boolean;
 }) {
   const { lang, setLang } = useLanguage();
   const order: Lang[] = ["en", "tr"];
@@ -75,8 +77,8 @@ export default function LanguageSwitcher({
               {FLAGS[code].node}
             </span>
             <span
-              className={`text-[11px] tracking-[0.18em] ${
-                active ? "text-gold" : ""
+              className={`text-[11px] tracking-[0.18em] transition-colors duration-500 ${
+                active ? "text-gold" : onDark ? "text-cream" : "text-navy"
               }`}
             >
               {FLAGS[code].label}
